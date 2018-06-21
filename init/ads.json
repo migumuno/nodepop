@@ -1,0 +1,8 @@
+[
+    {"name": "Tabla de snow", "sale": true, "price": 120, "img": "snow.jpg", "tags": ["lifestyle"]},
+    {"name": "Yamaha MT07", "sale": true, "price": 5500, "img": "moto.jpg", "tags": ["lifestyle", "motor"]},
+    {"name": "Drone DJI", "sale": false, "price": 300, "img": "drone.jpg", "tags": ["lifestyle"]},
+    {"name": "Macbook PRO", "sale": false, "price": 1600, "img": "mac.jpg", "tags": ["lifestyle", "work"]},
+    {"name": "iPhone X 256GB", "sale": false, "price": 700, "img": "iphone.jpg", "tags": ["lifestyle", "mobile"]},
+    {"name": "Guitarra española", "sale": true, "price": 85, "img": "guitarra.jpg", "tags": ["lifestyle"]}
+]

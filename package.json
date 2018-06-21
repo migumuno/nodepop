@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=pro node ./bin/www",
-    "dev": "cross-env DEBUG=nodeapi:* PORT=3005 NODE_ENV=dev nodemon ./bin/www"
+    "dev": "cross-env DEBUG=nodeapi:* PORT=3005 NODE_ENV=dev nodemon ./bin/www",
+    "installDB": "node ./init/install_db.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

@@ -8,7 +8,7 @@ const adSchema = mongoose.Schema({
     sale: Boolean,
     price: Number,
     img: String,
-    tags: Array
+    tags: [String]
 });
 
 // Create the model

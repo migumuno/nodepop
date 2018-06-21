@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// Conexión con la base de datos
+// Create de database connection
 require('./lib/connectMongoose');
 
 /**
