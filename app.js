@@ -78,7 +78,7 @@ app.use(function(err, req, res, next) {
 });
 
 function isAPI(req) {
-  return req.originalUrl.indexOf( '/apiV' ) === 0;
+  return req.originalUrl.indexOf( '/apiv' ) === 0;
 }
 
 module.exports = app;

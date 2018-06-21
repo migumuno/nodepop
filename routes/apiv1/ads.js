@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const { body, validationResult } = require('express-validator/check');
 
 const Ad = require( '../../models/Ad' );
 
@@ -66,7 +67,76 @@ router.get('/', async (req, res, next) => {
 });
 
 /**
- * 
+ * Get the tags
  */
+router.get('/tags', async (req, res, next) => {
+    try {
+        const docs = await Ad.distinct('tags');
+        res.json({success: true, data: docs});
+    } catch(err) {
+        next(err);
+        return;
+    }
+});
+
+/**
+ * Insert new ad
+ */
+router.post('/', [
+    body('price').optional().isNumeric().withMessage('must be numeric'),
+    body('sale').optional().isBoolean().withMessage('must be boolean')
+], async (req, res, next) => {
+    try {
+        validationResult(req).throw();
+        const data = req.body;
+        const ad = new Ad(data);
+
+        // Save the ad into database
+        const doc = await ad.save();
+        res.json({success:true, data: doc}); 
+    } catch(err) {
+        next(err);
+        return;
+    }
+});
+
+/**
+ * Update an ad by _id
+ */
+router.put('/:id', [
+    body('price').optional().isNumeric().withMessage('must be numeric'),
+    body('sale').optional().isBoolean().withMessage('must be boolean')
+], async (req, res, next) => {
+    try {
+        validationResult(req).throw();
+        const data = req.body;
+        const _id = req.params.id;
+        
+        const adUpdated = await Ad.findByIdAndUpdate(_id, data, {
+            new: true
+        });
+
+        res.json({success: true, data: adUpdated});
+    } catch(err) {
+        next(err);
+        return;
+    }
+});
+
+/**
+ * Delete an ad by _id
+ */
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const _id = req.params.id;
+
+        await Ad.remove( {_id: _id} ).exec();
+
+        res.json( { success: true } );
+    } catch(err) {
+        next(err);
+        return;
+    }
+})
 
 module.exports = router;
