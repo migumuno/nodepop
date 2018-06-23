@@ -80,6 +80,24 @@ router.get('/tags', async (req, res, next) => {
 });
 
 /**
+ * Get the maximum price
+ */
+router.get('/max_price', async (req, res, next) => {
+    try {
+        const query = Ad.find();
+        query.sort('-price');
+        query.limit(1);
+        query.select('price');
+
+        const docs = await query.exec();
+        res.json({success: true, data: docs});
+    } catch(err) {
+        next(err);
+        return;
+    }
+});
+
+/**
  * Insert new ad
  */
 router.post('/', [
