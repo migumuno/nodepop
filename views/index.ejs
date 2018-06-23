@@ -79,8 +79,11 @@
                 <div class="ads--item">
                     <div class="ads--item__img"><img src="anuncios/<%= ad.img %>" alt="<%= ad.name %>"></div>
                     <div class="ads--item__text">
-                      <div class="ads--item__text--price"><%= ad.price %></div>
+                      <div class="ads--item__text--price"><%= ad.price %> €</div>
                       <div class="ads--item__text--name"><%= ad.name %></div>
+                    </div>
+                    <div class="ads--item__sale">
+                      <small><% if(ad.sale) { %> Se vende <% } else { %> Se busca <% } %></small>
                     </div>
                 </div>
               </div>

@@ -71,3 +71,12 @@ section.ads .ads--item > .ads--item__text > .ads--item__text--price {
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
+
+.ads--item__sale {
+  position: absolute;
+  bottom: 20px;
+  background-color: rgb(122, 212, 183);
+  padding: 5px 20px;
+  color: #fff;
+  border-bottom-left-radius: 10px;
+  }
