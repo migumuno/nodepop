@@ -1,8 +1,73 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(242,244,245);
 }
 
 a {
   color: #00B7FF;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+section.ads-filter {
+  background-color: rgb(122, 212, 183);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  color: white;
+}
+
+section.ads-filter .ads-filter--tags__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+section.ads-filter .ads-filter--tags__list li {
+  display: inline-block;
+  margin-left: 30px;
+  padding-top: 6px;
+}
+
+section.ads-filter .ads-filter--tags {
+  padding-top: 10px;
+}
+
+section.ads-filter .ads-filter--name {
+  padding-top: 10px;
+}
+
+section.ads-filter .ads-filter--submit {
+  padding-top: 10px;
+}
+
+section.ads .ads--item {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  height: 300px;
+}
+
+section.ads .ads--item > .ads--item__img {
+  height: 180px;
+  overflow: hidden;
+}
+
+section.ads .ads--item > .ads--item__img img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+section.ads .ads--item > .ads--item__text {
+  padding: 10px;
+}
+
+section.ads .ads--item > .ads--item__text > .ads--item__text--price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
 }

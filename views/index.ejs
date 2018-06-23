@@ -1,11 +1,92 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<% include partials/header %>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+    <div class="main">
+      <section class="ads-filter">
+        <form action="holi" id="ads-filter-form">
+          <div class="row">
+              <div class="col-xl-3">
+                <div class="ads-filter--price">
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="min-price">Precio desde: <span></span></label>
+                      <input type="range" class="custom-range" min="0" max="<%= data.top_price %>" value="<%= data.min_price %>" name="min-price" id="min-price">
+                    </div>
+                    <div class="col-6">
+                      <label for="max-price">Precio hasta: <span></span></label>
+                      <input type="range" class="custom-range" min="0" max="<%= data.top_price %>" value="<%= data.max_price %>" name="max-price" id="max-price">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-2">
+                <div class="ads-filter--tags">
+                  Tags:
+                  <ul class="ads-filter--tags__list">
+                    <% data.tags.forEach( function(tag) { %>
+                      <li class="ads-filter--tags__list--item">
+                        <input class="form-check-input" type="checkbox" name="tags[]" value="<%= tag.key %>" <%= tag.checked %>>
+                        <label class="form-check-label" for="tags">
+                          <%= tag.key %>
+                        </label>
+                      </li>
+                    <% }); %>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-2">
+                <div class="ads-filter--type">
+                    Marcado como:
+                    <ul class="ads-filter--tags__list">
+                      <li class="ads-filter--tags__list--item">
+                        <input class="form-check-input" type="radio" name="sale" id="sale" value="true">
+                        <label class="form-check-label" for="tags-lifestyle">
+                          Se vende
+                        </label>
+                      </li>
+                      <li class="ads-filter--tags__list--item">
+                        <input class="form-check-input" type="radio" name="sale" id="sale" value="false">
+                        <label class="form-check-label" for="tags-work">
+                          Se busca
+                        </label>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+              <div class="col-xl-3">
+                <div class="ads-filter--name">
+                    <label class="sr-only" for="inlineFormInputGroup">Busca por nombre</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-search"></i></div>
+                      </div>
+                      <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Busca por nombre">
+                    </div>
+                </div>
+              </div>
+              <div class="col-xl-2">
+                <div class="ads-filter--submit">
+                  <button type="submit" class="btn btn-primary">Filtrar</button>
+                </div>
+              </div>
+          </div>
+      </form>
+      </section>
+      <section class="ads">
+        <div class="row">
+          <% ads.forEach( function(ad) { %>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="ads--item">
+                    <div class="ads--item__img"><img src="anuncios/<%= ad.img %>" alt="<%= ad.name %>"></div>
+                    <div class="ads--item__text">
+                      <div class="ads--item__text--price"><%= ad.price %></div>
+                      <div class="ads--item__text--name"><%= ad.name %></div>
+                    </div>
+                </div>
+              </div>
+          <% }); %>
+        </div>
+      </section>
+    </div>
+
+    <% include partials/footer %>
