@@ -18,7 +18,7 @@ section.ads-filter {
   background-color: rgb(122, 212, 183);
   border-radius: 10px;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 10px 30px;
   color: white;
 }
 
@@ -33,16 +33,20 @@ section.ads-filter .ads-filter--tags__list li {
   padding-top: 6px;
 }
 
-section.ads-filter .ads-filter--tags {
+section.ads-filter .ads-filter--item {
   padding-top: 10px;
 }
 
-section.ads-filter .ads-filter--name {
+section.ads-filter .ads-filter--item__search {
+  padding-top: 15px;
+}
+
+section.ads-filter .ads-filter--item__submit {
   padding-top: 10px;
 }
 
-section.ads-filter .ads-filter--submit {
-  padding-top: 10px;
+section.ads-filter .ads-filter--item__submit button {
+  width: 100%;
 }
 
 section.ads .ads--item {
@@ -50,6 +54,7 @@ section.ads .ads--item {
   border-radius: 10px;
   margin-bottom: 20px;
   height: 300px;
+  overflow: hidden;
 }
 
 section.ads .ads--item > .ads--item__img {
@@ -58,8 +63,10 @@ section.ads .ads--item > .ads--item__img {
 }
 
 section.ads .ads--item > .ads--item__img img {
-  width: 100%;
-  border-radius: 10px;
+  height: 100%;
+  min-width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 section.ads .ads--item > .ads--item__text {
@@ -79,4 +86,4 @@ section.ads .ads--item > .ads--item__text > .ads--item__text--price {
   padding: 5px 20px;
   color: #fff;
   border-bottom-left-radius: 10px;
-  }
+}

@@ -6,8 +6,8 @@
         <form action="holi" id="ads-filter-form">
           <div class="row">
               <div class="col-xl-3">
-                <div class="ads-filter--price">
-                  <div class="row">
+                <div class="ads-filter--item">
+                  <div class="row ads-filter--item__price">
                     <div class="col-6">
                       <label for="min-price">Precio desde: <span></span></label>
                       <input type="range" class="custom-range" min="0" max="<%= data.top_price %>" value="<%= data.min_price %>" name="min-price" id="min-price">
@@ -20,53 +20,61 @@
                 </div>
               </div>
               <div class="col-xl-2">
-                <div class="ads-filter--tags">
-                  Tags:
-                  <ul class="ads-filter--tags__list">
-                    <% data.tags.forEach( function(tag) { %>
-                      <li class="ads-filter--tags__list--item">
-                        <input class="form-check-input" type="checkbox" name="tags[]" value="<%= tag.key %>" <%= tag.checked %>>
-                        <label class="form-check-label" for="tags">
-                          <%= tag.key %>
-                        </label>
-                      </li>
-                    <% }); %>
-                  </ul>
+                <div class="ads-filter--item">
+                  <div class="ads-filter--item__tags">
+                      Tags:
+                      <ul class="ads-filter--tags__list">
+                        <% data.tags.forEach( function(tag) { %>
+                          <li class="ads-filter--tags__list--item">
+                            <input class="form-check-input" type="checkbox" name="tags[]" value="<%= tag.key %>" <%= tag.checked %>>
+                            <label class="form-check-label" for="tags">
+                              <%= tag.key %>
+                            </label>
+                          </li>
+                        <% }); %>
+                      </ul>
+                  </div>
                 </div>
               </div>
               <div class="col-xl-2">
-                <div class="ads-filter--type">
-                    Marcado como:
-                    <ul class="ads-filter--tags__list">
-                      <li class="ads-filter--tags__list--item">
-                        <input class="form-check-input" type="radio" name="sale" id="sale" value="true">
-                        <label class="form-check-label" for="tags-lifestyle">
-                          Se vende
-                        </label>
-                      </li>
-                      <li class="ads-filter--tags__list--item">
-                        <input class="form-check-input" type="radio" name="sale" id="sale" value="false">
-                        <label class="form-check-label" for="tags-work">
-                          Se busca
-                        </label>
-                      </li>
-                    </ul>
+                <div class="ads-filter--item">
+                    <div class="ads-filter--item__type">
+                        Marcado como:
+                        <ul class="ads-filter--tags__list">
+                          <li class="ads-filter--tags__list--item">
+                            <input class="form-check-input" type="radio" name="sale" id="sale" value="true">
+                            <label class="form-check-label" for="tags-lifestyle">
+                              Se vende
+                            </label>
+                          </li>
+                          <li class="ads-filter--tags__list--item">
+                            <input class="form-check-input" type="radio" name="sale" id="sale" value="false">
+                            <label class="form-check-label" for="tags-work">
+                              Se busca
+                            </label>
+                          </li>
+                        </ul>
+                    </div>
                 </div>
               </div>
               <div class="col-xl-3">
-                <div class="ads-filter--name">
-                    <label class="sr-only" for="inlineFormInputGroup">Busca por nombre</label>
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fas fa-search"></i></div>
+                <div class="ads-filter--item">
+                    <div class="ads-filter--item__search">
+                      <label class="sr-only" for="inlineFormInputGroup">Busca por nombre</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="fas fa-search"></i></div>
+                        </div>
+                        <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Busca por nombre">
                       </div>
-                      <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Busca por nombre">
                     </div>
                 </div>
               </div>
               <div class="col-xl-2">
-                <div class="ads-filter--submit">
-                  <button type="submit" class="btn btn-primary">Filtrar</button>
+                <div class="ads-filter--item">
+                  <div class="ads-filter--item__submit">
+                      <button type="submit" class="btn btn-primary">Filtrar</button>
+                  </div>
                 </div>
               </div>
           </div>
