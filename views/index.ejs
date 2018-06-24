@@ -3,7 +3,7 @@
     <h1><%= title %></h1>
     <div class="main">
       <section class="ads-filter">
-        <form action="holi" id="ads-filter-form">
+        <form action="" id="ads-filter-form">
           <div class="row">
               <div class="col-xl-3">
                 <div class="ads-filter--item">
@@ -88,7 +88,8 @@
                     <div class="ads--item__img"><img src="anuncios/<%= ad.img %>" alt="<%= ad.name %>"></div>
                     <div class="ads--item__text">
                       <div class="ads--item__text--price"><%= ad.price %> €</div>
-                      <div class="ads--item__text--name"><%= ad.name %></div>
+                      <div class="ads--item__text--name"><p><%= ad.name %></p></div>
+                      <div class="ads--item__text--tags"><small>Tags: <%= ad.tags %></small></div>
                     </div>
                     <div class="ads--item__sale">
                       <small><% if(ad.sale) { %> Se vende <% } else { %> Se busca <% } %></small>
