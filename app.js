@@ -62,7 +62,7 @@ app.use(function(err, req, res, next) {
   if(err.array) { // validation error
       err.status = 422;
       const errInfo = err.array({ onlyFirstError: true })[0]; // muestra solo 1 error, pero se podrían mostrar todos.
-      err.message = `Not valid - ${errInfo.param} ${errInfo.msg}`;
+      err.message = `Not valid - ${errInfo.param} : ${errInfo.msg}`;
   }
 
   // render the error page
