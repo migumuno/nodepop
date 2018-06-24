@@ -11,6 +11,7 @@ const Ad = require( '../../models/Ad' );
  */
 router.get('/', async (req, res, next) => {
     try {
+        // Define variables
         const name = req.query.name;
         const sale = req.query.sale;
         const tags = req.query.tags;
@@ -59,6 +60,7 @@ router.get('/', async (req, res, next) => {
 
         // Get the docs
         const docs = await Ad.list(filter, skip, limit, sort, fields);
+
         res.json({success: true, data: docs});
     } catch(err) {
         next(err);
@@ -102,16 +104,34 @@ router.get('/max_price', async (req, res, next) => {
  */
 router.post('/', [
     body('price').optional().isNumeric().withMessage('must be numeric'),
-    body('sale').optional().isBoolean().withMessage('must be boolean')
+    body('sale').optional().isBoolean().withMessage('must be boolean'),
+    body('tags').custom( value => { // check if the tags passed are correct
+        return new Promise( (resolve, reject) => {
+            Ad.distinct('tags', (err, tags) => {
+                const tagsPassed = value.split(/,|\s/);
+                tagsPassed.forEach(tag => {
+                    if(tags.indexOf(tag) == -1) {
+                        return reject(); // it found an incorrect tag
+                    }
+                });
+
+                return resolve();
+            })
+        } ) 
+    } ).withMessage('You have added incorrect tags.')
 ], async (req, res, next) => {
     try {
+        // Send the validation result if error
         validationResult(req).throw();
         const data = req.body;
+
+        // Convert tags passed to array before insert into database
+        data.tags = data.tags.split(/,|\s/);
         const ad = new Ad(data);
 
         // Save the ad into database
         const doc = await ad.save();
-        res.json({success:true, data: doc}); 
+        res.json({success:true, data: doc});
     } catch(err) {
         next(err);
         return;
@@ -123,12 +143,29 @@ router.post('/', [
  */
 router.put('/:id', [
     body('price').optional().isNumeric().withMessage('must be numeric'),
-    body('sale').optional().isBoolean().withMessage('must be boolean')
+    body('sale').optional().isBoolean().withMessage('must be boolean'),
+    body('tags').custom( value => { // check if the tags passed are correct
+        return new Promise( (resolve, reject) => {
+            Ad.distinct('tags', (err, tags) => {
+                const tagsPassed = value.split(/,|\s/);
+                tagsPassed.forEach(tag => {
+                    if(tags.indexOf(tag) == -1) {
+                        return reject(); // it found an incorrect tag
+                    }
+                });
+
+                return resolve();
+            })
+        } ) 
+    } ).withMessage('You have added incorrect tags.')
 ], async (req, res, next) => {
     try {
         validationResult(req).throw();
         const data = req.body;
         const _id = req.params.id;
+
+        // Convert tags passed to array before insert into database
+        data.tags = data.tags.split(/,|\s/);
         
         const adUpdated = await Ad.findByIdAndUpdate(_id, data, {
             new: true
