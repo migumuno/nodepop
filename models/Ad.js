@@ -11,8 +11,6 @@ const adSchema = mongoose.Schema({
     tags: { type: [String], index: true }
 });
 
-adSchema.index({name: 'text'});
-
 /**
  * List the ads with filtered options
  * @param {object} filter 
@@ -28,6 +26,8 @@ adSchema.statics.list = function(filter, skip, limit, sort, fields) {
     query.limit(limit);
     query.sort(sort);
     query.select(fields);
+    
+    // Execute the query and return
     return query.exec();
 }
 
