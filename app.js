@@ -41,6 +41,9 @@ app.use(express.static(path.join(__dirname, 'public')));
  * Variables globales ejs
  */
 app.locals.title = 'Nodepop';
+app.locals.config = {
+  limitPagination: 12
+};
 
 /**
  * Middlewares del front de la aplicación

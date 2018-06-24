@@ -112,8 +112,7 @@ router.get('/', async (req, res, next) => {
         });
 
         // Render page
-        res.render('index', { 
-            title: 'Nodepop',
+        res.render('index', {
             ads: docs,
             data: data
         });
