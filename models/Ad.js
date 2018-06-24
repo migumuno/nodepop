@@ -29,7 +29,7 @@ adSchema.statics.list = function(filter, skip, limit, sort, fields) {
     
     // Execute the query and return
     return query.exec();
-}
+};
 
 // Create the model
 const Ad = mongoose.model( 'Ad', adSchema );

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=pro node ./bin/www",
     "dev": "cross-env DEBUG=nodeapi:* PORT=3005 NODE_ENV=dev nodemon ./bin/www",
-    "installDB": "node ./init/install_db.js"
+    "installDB": "node ./init/install_db.js",
+    "eslint": "./node_modules/.bin/eslint"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -17,5 +18,8 @@
     "http-errors": "~1.6.2",
     "mongoose": "^5.1.6",
     "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.0"
   }
 }
